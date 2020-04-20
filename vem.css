@@ -1,0 +1,59 @@
+/* contenido de la web */
+.container-fluid {
+  background-color: rgba(5, 5, 114, 0.856);
+}
+h3 {
+  color: crimson;
+}
+
+h2 {
+  color: white;
+  text-align: center;
+}
+
+h5 {
+  color: rgb(1, 65, 117);
+}
+
+label {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.card {
+  background-color: rgb(240, 236, 236);
+}
+
+footer {
+  background-color: black;
+  height: 60px;
+}
+
+p {
+  color: aquamarine;
+  text-align: center;
+  font-size: 17px;
+  padding: 15px;
+}
+
+/* aplica para todas las tablas */
+.resultado {
+  font-size: 14px;
+  width: auto;
+}
+
+/* encabezados de las tablas */
+th {
+  text-align: center;
+  font-size: 17px;
+}
+
+/* contenido de las tablas "las filas" */
+td {
+  font-size: 14px;
+}
+
+/* aplica para la clase a la tabla donde se muestran los códigos de servicio */
+.muestra__servicios {
+  text-align: center;
+}

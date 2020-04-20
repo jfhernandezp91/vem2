@@ -1,0 +1,1954 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="vem.css" />
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+    <title>VINCULACIÓN</title>
+  </head>
+  <body>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></!-->
+
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="vue.min.js"></script>
+    <script src="jquery.min.js"></script>
+    <script src="popper.min.js"></script>
+
+    <!-- bootstrap js -->
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- comienza la web -->
+
+    <div id="ach">
+      <div class="container-fluid p-4">
+        <h2>Vinculación de Empresas ACH Colombia</h2>
+
+        <!-- --------------------------COMIENZA MODAL SERVICIO------------------------------------------- -->
+
+        <!-- comienza sección servicio -->
+        <div class="row">
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <h3>Servicio:</h3>
+                <form>
+                  <div class="form-row">
+                    <div class="col-md-3">
+                      <label>Nombre Vinculación:</label>
+                      <input
+                        v-model="razonSocial"
+                        type="text"
+                        class="form-control"
+                        disabled
+                      />
+                    </div>
+
+                    <div class="col-md-3">
+                      <label>Entidad Financiera:</label>
+                      <select v-model="entidadFinanciera" class="form-control">
+                        <option
+                          v-for="bancos in seleccionEntidadFinanciera"
+                          :value="bancos"
+                          >{{bancos}}</option
+                        >
+                      </select>
+                    </div>
+
+                    <div class="col-md-3">
+                      <label>Tipo de Servicio:</label>
+                      <select v-model="tipoServicio" class="form-control">
+                        <option
+                          v-for="servicios in seleccionTipoServicio"
+                          :value="servicios"
+                          >{{servicios}}</option
+                        >
+                      </select>
+                    </div>
+
+                    <div class="col-md-3">
+                      <label>Tipo de Conexión:</label>
+                      <select v-model="tipoConexion" class="custom-select">
+                        <option disable value="">Seleccione</option>
+                        <option value="Agregador">Agregador</option>
+                        <option value="Empresa a PSE Pagos"
+                          >Empresa a PSE Pagos</option
+                        >
+                        <option value="Empresa Desarrollo Directo"
+                          >Empresa Desarrollo Directo</option
+                        >
+                        <option value="Pasarela">Pasarela</option>
+                        <option value="PSE Pagos Portales"
+                          >PSE Pagos Portales</option
+                        >
+                        <option value="No Aplica">No Aplica</option>
+                      </select>
+                    </div>
+
+                    <div class="col-md-3">
+                      <label>Tipo de Funcionalidad:</label>
+                      <select v-model="tipoFuncionalidad" class="custom-select">
+                        <option disable value="">Seleccione</option>
+                        <option value="Cargue de Factura - CF"
+                          >Cargue de Factura - CF</option
+                        >
+                        <option value="Conexión en Línea - CEL"
+                          >Conexión en Línea - CEL
+                        </option>
+                        <option value="Conexión Integrada de Factura - CIF"
+                          >Conexión Integrada de Factura - CIF</option
+                        >
+                        <option value="Formulario de Pago - FP"
+                          >Formulario de Pago - FP</option
+                        >
+                        <option value="No aplica">No aplica</option>
+                      </select>
+                    </div>
+
+                    <div class="col-md-3">
+                      <label>Pasarela:</label>
+                      <input
+                        v-model="pasarela"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-4">
+                      <label>Categoría:</label>
+                      <input
+                        v-model="categoria"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+                    <div class="col-md-2">
+                      <label>¿Cómo Sucursal?</label>
+                      <select v-model="opcionSucursal" class="custom-select">
+                        <option disable value="">Seleccione</option>
+                        <option value="SI">SI</option>
+                        <option value="NO">NO</option>
+                      </select>
+                    </div>
+                  </div>
+                </form>
+                <!-- termina formulario de servicio -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- termina sección servicio -->
+
+        <!-- ------------------------------------------------TERMINA MODAL SEVICIO------------------------------------------------------------ -->
+
+        <!-- comienza sección servicio -->
+        <!-- <div class="row">
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <h3>Servicio:</h3>
+                <form>
+                  <div class="form-row">
+                    <div class="col-md-3">
+                      <label>Nombre Vinculación:</label>
+                      <input
+                        v-model="razonSocial"
+                        type="text"
+                        class="form-control"
+                        disabled
+                      />
+                    </div>
+
+                    <div class="col-md-3">
+                      <label>Entidad Financiera:</label>
+                      <select v-model="entidadFinanciera" class="form-control">
+                        <option
+                          v-for="bancos in seleccionEntidadFinanciera"
+                          :value="bancos"
+                          >{{bancos}}</option
+                        >
+                      </select>
+                    </div>
+
+                    <div class="col-md-3">
+                      <label>Tipo de Servicio:</label>
+                      <select v-model="tipoServicio" class="form-control">
+                        <option
+                          v-for="servicios in seleccionTipoServicio"
+                          :value="servicios"
+                          >{{servicios}}</option
+                        >
+                      </select>
+                    </div>
+
+                    <div class="col-md-3">
+                      <label>Tipo de Conexión:</label>
+                      <select v-model="tipoConexion" class="custom-select">
+                        <option disable value="">Seleccione</option>
+                        <option value="Agregador">Agregador</option>
+                        <option value="Empresa a PSE Pagos"
+                          >Empresa a PSE Pagos</option
+                        >
+                        <option value="Empresa Desarrollo Directo"
+                          >Empresa Desarrollo Directo</option
+                        >
+                        <option value="Pasarela">Pasarela</option>
+                        <option value="PSE Pagos Portales"
+                          >PSE Pagos Portales</option
+                        >
+                      </select>
+                    </div>
+
+                    <div class="col-md-3">
+                      <label>Tipo de Funcionalidad:</label>
+                      <select v-model="tipoFuncionalidad" class="custom-select">
+                        <option disable value="">Seleccione</option>
+                        <option value="Cargue de Factura - CF"
+                          >Cargue de Factura - CF</option
+                        >
+                        <option value="Conexión en Línea - CEL"
+                          >Conexión en Línea - CEL
+                        </option>
+                        <option value="Formulario de Pago - FP"
+                          >Formulario de Pago - FP</option
+                        >
+                        <option value="Pasarela">Pasarela</option>
+                        <option value="No aplica">No aplica</option>
+                      </select>
+                    </div>
+
+                    <div class="col-md-3">
+                      <label>Pasarela:</label>
+                      <input
+                        v-model="pasarela"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-2">
+                      <label>Categoría:</label>
+                      <input
+                        v-model="categoria"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+                    <div class="col-md-2">
+                      <label>¿Cómo Sucursal?</label>
+                      <select v-model="opcionSucursal" class="custom-select">
+                        <option disable value="">Seleccione</option>
+                        <option value="SI">SI</option>
+                        <option value="NO">NO</option>
+                      </select>
+                    </div>
+                  </div>
+                </form>
+                <!-- termina formulario de servicio -->
+        <!-- </div>
+            </div>
+          </div>
+        </div> -->
+        <br />
+        <!-- termina sección servicio -->
+
+        <!-- --------------------------COMIENZA MODAL CODIGO DE SERVICIO------------------------------------------- -->
+
+        <div class="row">
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <h3>Código de Servicio</h3>
+
+                <!-- Seleccion cantidad codigos de servicio -->
+                <div class="form-group row">
+                  <label class="col-md-4"
+                    >Seleccione el número de códigos de servicio a
+                    utilizar:</label
+                  >
+                  <select
+                    v-model="numerosCodigos"
+                    class="custom-select col-md-2"
+                  >
+                    <option disable value="">Seleccione</option>
+                    <option value="1">1 - uno</option>
+                    <option value="2">2 - dos</option>
+                    <option value="3">3 - tres</option>
+                    <option value="4">4 - cuatro</option>
+                  </select>
+                </div>
+                <br />
+
+                <!-- Código de servicio #1 -->
+                <form v-if="numerosCodigos >= 1" name="codigos__Servicios">
+                  <div class="form-row">
+                    <div class="col-md-2">
+                      <label>Tipo de Servicio:</label>
+                      <select v-model="tipoServicio1" class="custom-select">
+                        <option value="Recaudo">Recaudo</option>
+                        <option value="Compra">Compra</option>
+                      </select>
+                    </div>
+
+                    <div class="col-md-2">
+                      <label>Código de Servicio:</label>
+                      <input
+                        v-model="codigoServicio1"
+                        type="number"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-2">
+                      <label>Descripción del Servicio:</label>
+                      <input
+                        v-model="descripcionServicio1"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-2">
+                      <label>No. Cuenta:</label>
+                      <input
+                        v-model="cuenta1"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-2">
+                      <label>Tipo Cta:</label>
+                      <select v-model="tipoCuenta1" class="custom-select">
+                        <option value="Ahorros">Ahorros</option>
+                        <option value="Corriente">Corriente</option>
+                      </select>
+                    </div>
+
+                    <div class="col-md-1">
+                      <label>Natural:</label>
+                      <input
+                        v-model="limiteNatural1"
+                        type="number"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-1">
+                      <label>Jurídica:</label>
+                      <input
+                        v-model="limiteJuridica1"
+                        type="number"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+                </form>
+
+                <!-- Codigo de servicio #2 -->
+                <form v-if="numerosCodigos >= 2">
+                  <div class="form-row">
+                    <div class="col-md-2">
+                      <label>Tipo de Servicio:</label>
+                      <select v-model="tipoServicio2" class="custom-select">
+                        <option value="Recaudo">Recaudo</option>
+                        <option value="Compra">Compra</option>
+                      </select>
+                    </div>
+
+                    <div class="col-md-2">
+                      <label>Código de Servicio:</label>
+                      <input
+                        v-model="codigoServicio2"
+                        type="number"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-2">
+                      <label>Descripción del Servicio:</label>
+                      <input
+                        v-model="descripcionServicio2"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-2">
+                      <label>No. Cuenta:</label>
+                      <input
+                        v-model="cuenta2"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-2">
+                      <label>Tipo Cta:</label>
+                      <select v-model="tipoCuenta2" class="custom-select">
+                        <option value="Ahorros">Ahorros</option>
+                        <option value="Corriente">Corriente</option>
+                      </select>
+                    </div>
+
+                    <div class="col-md-1">
+                      <label>Natural:</label>
+                      <input
+                        v-model="limiteNatural2"
+                        type="number"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-1">
+                      <label>Jurídica:</label>
+                      <input
+                        v-model="limiteJuridica2"
+                        type="number"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+                </form>
+
+                <!-- Codigo de servicio #3 -->
+                <form v-if="numerosCodigos >= 3">
+                  <div class="form-row">
+                    <div class="col-md-2">
+                      <label>Tipo de Servicio:</label>
+                      <select v-model="tipoServicio3" class="custom-select">
+                        <option value="Recaudo">Recaudo</option>
+                        <option value="Compra">Compra</option>
+                      </select>
+                    </div>
+
+                    <div class="col-md-2">
+                      <label>Código de Servicio:</label>
+                      <input
+                        v-model="codigoServicio3"
+                        type="number"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-2">
+                      <label>Descripción del Servicio:</label>
+                      <input
+                        v-model="descripcionServicio3"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-2">
+                      <label>No. Cuenta:</label>
+                      <input
+                        v-model="cuenta3"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-2">
+                      <label>Tipo Cta:</label>
+                      <select v-model="tipoCuenta3" class="custom-select">
+                        <option value="Ahorros">Ahorros</option>
+                        <option value="Corriente">Corriente</option>
+                      </select>
+                    </div>
+
+                    <div class="col-md-1">
+                      <label>Natural:</label>
+                      <input
+                        v-model="limiteNatural3"
+                        type="number"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-1">
+                      <label>Jurídica:</label>
+                      <input
+                        v-model="limiteJuridica3"
+                        type="number"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+                </form>
+
+                <!-- Codigo de servicio #4 -->
+                <form v-if="numerosCodigos >= 4">
+                  <div class="form-row">
+                    <div class="col-md-2">
+                      <label>Tipo de Servicio:</label>
+                      <select v-model="tipoServicio4" class="custom-select">
+                        <option value="Recaudo">Recaudo</option>
+                        <option value="Compra">Compra</option>
+                      </select>
+                    </div>
+
+                    <div class="col-md-2">
+                      <label>Código de Servicio:</label>
+                      <input
+                        v-model="codigoServicio4"
+                        type="number"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-2">
+                      <label>Descripción del Servicio:</label>
+                      <input
+                        v-model="descripcionServicio4"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-2">
+                      <label>No. Cuenta:</label>
+                      <input
+                        v-model="cuenta4"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-2">
+                      <label>Tipo Cta:</label>
+                      <select v-model="tipoCuenta4" class="custom-select">
+                        <option value="Ahorros">Ahorros</option>
+                        <option value="Corriente">Corriente</option>
+                      </select>
+                    </div>
+
+                    <div class="col-md-1">
+                      <label>Natural:</label>
+                      <input
+                        v-model="limiteNatural4"
+                        type="number"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-1">
+                      <label>Jurídica:</label>
+                      <input
+                        v-model="limiteJuridica4"
+                        type="number"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+                </form>
+                <!-- termina codigo de servicio #4 -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+        <!-- Termina Sección Código de servicio -->
+
+        <!-- ------------------------------------------------TERMINA MODAL CÓDIGO DE SERVICIO------------------------------------------------------------ -->
+
+        <!-- comienza sección código de servicio -->
+        <!-- <div class="row">
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <h3>Código de Servicio</h3>
+
+                Seleccion cantidad codigos de servicio -->
+        <!-- <div class="form-group row">
+                  <label class="col-md-4"
+                    >Seleccione el número de códigos de servicio a
+                    utilizar:</label
+                  >
+                  <select
+                    v-model="numerosCodigos"
+                    class="custom-select col-md-2"
+                  >
+                    <option disable value="">Seleccione</option>
+                    <option value="1">1 - uno</option>
+                    <option value="2">2 - dos</option>
+                    <option value="3">3 - tres</option>
+                    <option value="4">4 - cuatro</option>
+                  </select>
+                </div>
+                <br />
+
+                <!-- Código de servicio #1 -->
+        <!-- <form v-if="numerosCodigos >= 1">
+                  <div class="form-row">
+                    <div class="col-md-2">
+                      <label>Tipo de Servicio:</label> 
+                      <select v-model="tipoServicio1" class="custom-select">
+                        <option value="Recaudo">Recaudo</option>
+                        <option value="Compra">Compra</option>
+                      </select>
+                    </div>
+
+                    <div class="col-md-2">
+                      <label>Código de Servicio:</label>
+                      <input
+                        v-model="codigoServicio1"
+                        type="number"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-2">
+                      <label>Descripción del Servicio:</label>
+                      <input
+                        v-model="descripcionServicio1"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-2">
+                      <label>No. Cuenta:</label>
+                      <input
+                        v-model="cuenta1"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-2">
+                      <label>Tipo Cta:</label>
+                      <select v-model="tipoCuenta1" class="custom-select">
+                        <option value="Ahorros">Ahorros</option>
+                        <option value="Corriente">Corriente</option>
+                      </select>
+                    </div>
+
+                    <div class="col-md-1">
+                      <label>Jurídica:</label>
+                      <input
+                        v-model="limiteJuridica1"
+                        type="number"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-1">
+                      <label>Natural:</label>
+                      <input
+                        v-model="limiteNatural1"
+                        type="number"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+                </form> -->
+
+        <!-- Codigo de servicio #2 -->
+        <!-- <form v-if="numerosCodigos >= 2">
+                  <div class="form-row">
+                    <div class="col-md-2">
+                      <label>Tipo de Servicio:</label>
+                      <select v-model="tipoServicio2" class="custom-select">
+                        <option value="Recaudo">Recaudo</option>
+                        <option value="Compra">Compra</option>
+                      </select>
+                    </div>
+
+                    <div class="col-md-2">
+                      <label>Código de Servicio:</label>
+                      <input
+                        v-model="codigoServicio2"
+                        type="number"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-2">
+                      <label>Descripción del Servicio:</label>
+                      <input
+                        v-model="descripcionServicio2"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-2">
+                      <label>No. Cuenta:</label>
+                      <input
+                        v-model="cuenta2"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-2">
+                      <label>Tipo Cta:</label>
+                      <select v-model="tipoCuenta2" class="custom-select">
+                        <option value="Ahorros">Ahorros</option>
+                        <option value="Corriente">Corriente</option>
+                      </select>
+                    </div>
+
+                    <div class="col-md-1">
+                      <label>Jurídica:</label>
+                      <input
+                        v-model="limiteJuridica2"
+                        type="number"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-1">
+                      <label>Natural:</label>
+                      <input
+                        v-model="limiteNatural2"
+                        type="number"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+                </form> -->
+
+        <!-- Codigo de servicio #3 -->
+        <!-- <form v-if="numerosCodigos >= 3">
+                  <div class="form-row">
+                    <div class="col-md-2">
+                      <label>Tipo de Servicio:</label>
+                      <select v-model="tipoServicio3" class="custom-select">
+                        <option value="Recaudo">Recaudo</option>
+                        <option value="Compra">Compra</option>
+                      </select>
+                    </div>
+
+                    <div class="col-md-2">
+                      <label>Código de Servicio:</label>
+                      <input
+                        v-model="codigoServicio3"
+                        type="number"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-2">
+                      <label>Descripción del Servicio:</label>
+                      <input
+                        v-model="descripcionServicio3"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-2">
+                      <label>No. Cuenta:</label>
+                      <input
+                        v-model="cuenta3"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-2">
+                      <label>Tipo Cta:</label>
+                      <select v-model="tipoCuenta3" class="custom-select">
+                        <option value="Ahorros">Ahorros</option>
+                        <option value="Corriente">Corriente</option>
+                      </select>
+                    </div>
+
+                    <div class="col-md-1">
+                      <label>Jurídica:</label>
+                      <input
+                        v-model="limiteJuridica3"
+                        type="number"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-1">
+                      <label>Natural:</label>
+                      <input
+                        v-model="limiteNatural3"
+                        type="number"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+                </form> -->
+
+        <!-- Codigo de servicio #4 -->
+        <!-- <form v-if="numerosCodigos >= 4">
+                  <div class="form-row">
+                    <div class="col-md-2">
+                      <label>Tipo de Servicio:</label>
+                      <select v-model="tipoServicio4" class="custom-select">
+                        <option value="Recaudo">Recaudo</option>
+                        <option value="Compra">Compra</option>
+                      </select>
+                    </div>
+
+                    <div class="col-md-2">
+                      <label>Código de Servicio:</label>
+                      <input
+                        v-model="codigoServicio4"
+                        type="number"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-2">
+                      <label>Descripción del Servicio:</label>
+                      <input
+                        v-model="descripcionServicio4"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-2">
+                      <label>No. Cuenta:</label>
+                      <input
+                        v-model="cuenta4"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-2">
+                      <label>Tipo Cta:</label>
+                      <select v-model="tipoCuenta4" class="custom-select">
+                        <option value="Ahorros">Ahorros</option>
+                        <option value="Corriente">Corriente</option>
+                      </select>
+                    </div>
+
+                    <div class="col-md-1">
+                      <label>Jurídica:</label>
+                      <input
+                        v-model="limiteJuridica4"
+                        type="number"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-1">
+                      <label>Natural:</label>
+                      <input
+                        v-model="limiteNatural4"
+                        type="number"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+                </form> -->
+        <!-- termina codigo de servicio #4 -->
+        <!-- </div>
+            </div>
+          </div>
+        </div>
+        <br /> -->
+        <!-- Termina Sección Código de servicio -->
+
+        <!-- --------------------------COMIENZA MODAL INFORMACION DE EMPRESA------------------------------------------- -->
+
+        <!-- empieza seccion información empresa -->
+        <div class="row">
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <h3>Información Empresa</h3>
+                <form>
+                  <div class="form-row">
+                    <div class="col-md-2">
+                      <label>Nit:</label>
+                      <input v-model="nit" type="number" class="form-control" />
+                    </div>
+
+                    <div class="col-md-2">
+                      <label>Número Veririficación:</label>
+                      <input
+                        v-model="noVerificacion"
+                        type="text"
+                        class="form-control"
+                        maxlength="1"
+                      />
+                    </div>
+
+                    <div class="col-md-3">
+                      <label>Razón Social:</label>
+                      <input
+                        v-model="razonSocial"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-3">
+                      <label>Marca Comercial:</label>
+                      <input
+                        v-model="marcaComercial"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-2">
+                      <label>Ciudad Empresa:</label>
+                      <input
+                        v-model="ciudadEmpresa"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-2">
+                      <label>Código CIIU:</label>
+                      <input
+                        v-model="ciiu"
+                        type="text"
+                        class="form-control"
+                        maxlength="4"
+                      />
+                    </div>
+
+                    <div class="col-md-3">
+                      <label>Actividad Económica:</label>
+                      <input
+                        v-model="actividadEconomica"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-2">
+                      <label>Direccción Empresa:</label>
+                      <input
+                        v-model="direccionEmpresa"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+                </form>
+                <!-- termina formulario de información empresa -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- termina sección información empresa -->
+
+        <!-- ------------------------------------------------TERMINA MODAL INFORMACION EMPRESA------------------------------------------------------------ -->
+
+        <!-- empieza seccion información empresa -->
+        <!-- <div class="row">
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <h3>Información Empresa</h3>
+                <form>
+                  <div class="form-row">
+                    <div class="col-md-2">
+                      <label>Nit:</label>
+                      <input v-model="nit" type="number" class="form-control" />
+                    </div>
+
+                    <div class="col-md-2">
+                      <label>Número Veririficación:</label>
+                      <input
+                        v-model="noVerificacion"
+                        type="text"
+                        class="form-control"
+                        maxlength="1"
+                      />
+                    </div>
+
+                    <div class="col-md-3">
+                      <label>Razón Social:</label>
+                      <input
+                        v-model="razonSocial"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-3">
+                      <label>Marca Comercial:</label>
+                      <input
+                        v-model="marcaComercial"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-2">
+                      <label>Ciudad Empresa:</label>
+                      <input
+                        v-model="ciudadEmpresa"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-2">
+                      <label>Código CIIU:</label>
+                      <input
+                        v-model="ciiu"
+                        type="text"
+                        class="form-control"
+                        maxlength="4"
+                      />
+                    </div>
+
+                    <div class="col-md-3">
+                      <label>Actividad Económica:</label>
+                      <input
+                        v-model="actividadEconomica"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-2">
+                      <label>Direccción Empresa:</label>
+                      <input
+                        v-model="direccionEmpresa"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+                </form> -->
+        <!-- termina formulario de información empresa -->
+        <!-- </div>
+            </div>
+          </div>
+        </div> -->
+        <!-- termina sección información empresa -->
+
+        <!-- <br /> -->
+
+        <!-- --------------------------COMIENZA MODAL EJECUTIVO DE CUENTA Y CONSULTOR ASIGNADO------------------------------------------- -->
+        <br />
+        <!-- empieza seccion ejecutivo de cuenta /consultor asignado -->
+        <div class="row">
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <h3>Ejecutivo de Cuenta / Consultor Asignado</h3>
+                <form>
+                  <div class="form-row">
+                    <div class="col-md-3">
+                      <label>Nombre del ejecutivo de cuenta:</label>
+                      <input
+                        v-model="nombreEjecutivoCuenta"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-3">
+                      <label>Teléfonos ejcutivo de cuenta:</label>
+                      <input
+                        v-model="telefonoEjecutivoCuenta"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-3">
+                      <label>Correo electrónico ejecutivo de cuenta:</label>
+                      <input
+                        v-model="emailEjecutivoCuenta"
+                        type="email"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-3">
+                      <label>Consultor ACH Asignado:</label>
+                      <select v-model="consultorACH" class="custom-select">
+                        <option value="Andrés Rodolfo Caipa Castiblanco"
+                          >Andrés Rodolfo Caipa Castiblanco</option
+                        >
+                        <option value="Anyela Maritza González Carmona"
+                          >Anyela Maritza González Carmona
+                        </option>
+                        <option value="Martha Patricia González Buitrago"
+                          >Martha Patricia González Buitrago</option
+                        >
+                        <option value="Melisa Montoya Londoño"
+                          >Melisa Montoya Londoño</option
+                        >
+                        <option value="Paola Andrea Osorio Moros"
+                          >Paola Andrea Osorio Moros</option
+                        >
+                        <option value="Piedad Tatiana Pinzón Onzaga"
+                          >Piedad Tatiana Pinzón Onzaga
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </form>
+                <!-- termina formulario ejecutivo de cuenta /consultor asignado -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ------------------------------------------------TERMINA MODAL EJECUTIVO DE CUENTA Y CONSULTOR ASIGNADO------------------------------------------------------------ -->
+
+        <!-- empieza seccion ejecutivo de cuenta /consultor asignado -->
+        <!-- <div class="row">
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <h3>Ejecutivo de Cuenta / Consultor Asignado</h3>
+                <form>
+                  <div class="form-row">
+                    <div class="col-md-3">
+                      <label>Nombre del ejecutivo de cuenta:</label>
+                      <input
+                        v-model="nombreEjecutivoCuenta"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-3">
+                      <label>Teléfonos ejcutivo de cuenta:</label>
+                      <input
+                        v-model="telefonoEjecutivoCuenta"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-3">
+                      <label>Correo electrónico ejecutivo de cuenta:</label>
+                      <input
+                        v-model="emailEjecutivoCuenta"
+                        type="email"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-3">
+                      <label>Consultor ACH Asignado:</label>
+                      <select v-model="consultorACH" class="custom-select">
+                        <option value="Andrés Rodolfo Caipa Castiblanco"
+                          >Andrés Rodolfo Caipa Castiblanco</option
+                        >
+                        <option value="Anyela Maritza González Carmona"
+                          >Anyela Maritza González Carmona
+                        </option>
+                        <option value="Martha Patricia González Buitrago"
+                          >Martha Patricia González Buitrago</option
+                        >
+                        <option value="Melisa Montoya Londoño"
+                          >Melisa Montoya Londoño</option
+                        >
+                        <option value="Paola Andrea Osorio Moros"
+                          >Paola Andrea Osorio Moros</option
+                        >
+                        <option value="Piedad Tatiana Pinzón Onzaga"
+                          >Piedad Tatiana Pinzón Onzaga
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </form> -->
+        <!-- termina formulario ejecutivo de cuenta /consultor asignado -->
+        <!-- </div>
+            </div>
+          </div>
+        </div> -->
+        <!-- termina sección ejecutivo de cuenta /consultor asignado -->
+
+        <!-- <br /> -->
+
+        <!-- --------------------------COMIENZA MODAL USUARIO ADMINISTRADOR/ADMINISTRADOR DE CUENTAS------------------------------------------- -->
+        <br />
+        <!-- empieza administrador de usuarios /administrador de cuentas -->
+        <div class="row">
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <h3>
+                  Administrador de usuarios / Administrador de cuentas
+                </h3>
+
+                <!-- Seleccion de usuario -->
+                <div class="form-group row">
+                  <label class="col-md-4"
+                    >¿El administrador de usuarios es el mismo administrador de
+                    cuentas?</label
+                  >
+                  <select
+                    v-model="opcionAdmonCuentas"
+                    class="custom-select col-md-2"
+                  >
+                    <option disable value="">Seleccione</option>
+                    <option value="SI">SI</option>
+                    <option value="NO">NO</option>
+                  </select>
+                </div>
+                <br />
+
+                <!-- formulario administrador de usuarios -->
+                <form v-if="opcionAdmonCuentas == 'NO' ">
+                  <h5>Administrador de Usuarios</h5>
+                  <div class="form-row">
+                    <div class="col-md-3">
+                      <label>Nombre:</label>
+                      <input
+                        v-model="nombreAdmonUsuarios"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-3">
+                      <label>Cédula:</label>
+                      <input
+                        v-model="cedulaAdmonUsuarios"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-3">
+                      <label>Correo:</label>
+                      <input
+                        v-model="emailAdmonUsuarios"
+                        type="email"
+                        class="form-control"
+                      />
+                    </div>
+                    <div class="col-md-3">
+                      <label>Teléfono:</label>
+                      <input
+                        v-model="telefonoAdmonUsuarios"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+                </form>
+                <br />
+                <hr />
+
+                <!-- formulario administrador de cuentas -->
+                <form v-if="opcionAdmonCuentas == 'NO' ">
+                  <h5>Administrador de Cuentas</h5>
+                  <div class="form-row">
+                    <div class="col-md-3">
+                      <label>Nombre:</label>
+                      <input
+                        v-model="nombreAdmonCuentas"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-3">
+                      <label>Cédula:</label>
+                      <input
+                        v-model="cedulaAdmonCuentas"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-3">
+                      <label>Correo:</label>
+                      <input
+                        v-model="emailAdmonCuentas"
+                        type="email"
+                        class="form-control"
+                      />
+                    </div>
+                    <div class="col-md-3">
+                      <label>Teléfono:</label>
+                      <input
+                        v-model="telefonoAdmonCuentas"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+                </form>
+
+                <!-- formulario admon usuario/admon cuenta -->
+                <form v-if="opcionAdmonCuentas == 'SI' ">
+                  <h5>
+                    Administrador de Usuarios / Administrador de Cuentas
+                  </h5>
+                  <div class="form-row">
+                    <div class="col-md-3">
+                      <label>Nombre:</label>
+                      <input
+                        v-model="nombreAdmonUsuarioyCuenta"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-3">
+                      <label>Cédula:</label>
+                      <input
+                        v-model="cedulaAdmonUsuarioyCuenta"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-3">
+                      <label>Correo:</label>
+                      <input
+                        v-model="emailAdmonUsuarioyCuenta"
+                        type="email"
+                        class="form-control"
+                      />
+                    </div>
+                    <div class="col-md-3">
+                      <label>Teléfono:</label>
+                      <input
+                        v-model="telefonoAdmonUsuarioyCuenta"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+                </form>
+                <!-- termina formulario administrador de usuarios /administrador de cuentas -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- termina sección administrador de usuarios /administrador de cuentas -->
+
+        <!-- ------------------------------------------------TERMINA MODAL USUARIO ADMINISTRADOR/ADMINISTRADOR DE CUENTAS------------------------------------------------------------ -->
+
+        <!-- empieza administrador de usuarios /administrador de cuentas -->
+        <!-- <div class="row">
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <h3>Administrador de usuarios / Administrador de cuentas</h3> -->
+
+        <!-- Seleccion de usuario -->
+        <!-- <div class="form-group row">
+                  <label class="col-md-4"
+                    >¿El administrador de usuarios es el mismo administrador de
+                    cuentas?</label
+                  >
+                  <select
+                    v-model="opcionAdmonCuentas"
+                    class="custom-select col-md-2"
+                  >
+                    <option disable value="">Seleccione</option>
+                    <option value="SI">SI</option>
+                    <option value="NO">NO</option>
+                  </select>
+                </div>
+                <br /> -->
+
+        <!-- formulario administrador de usuarios -->
+        <!-- <form v-if="opcionAdmonCuentas == 'NO' ">
+                  <h5>Administrador de Usuarios</h5>
+                  <div class="form-row">
+                    <div class="col-md-3">
+                      <label>Nombre:</label>
+                      <input
+                        v-model="nombreAdmonUsuarios"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-3">
+                      <label>Cédula:</label>
+                      <input
+                        v-model="cedulaAdmonUsuarios"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-3">
+                      <label>Correo:</label>
+                      <input
+                        v-model="emailAdmonUsuarios"
+                        type="email"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+                </form>
+                <br />
+                <hr /> -->
+
+        <!-- formulario administrador de cuentas -->
+        <!-- <form v-if="opcionAdmonCuentas == 'NO' ">
+                  <h5>Administrador de Cuentas</h5>
+                  <div class="form-row">
+                    <div class="col-md-3">
+                      <label>Nombre:</label>
+                      <input
+                        v-model="nombreAdmonCuentas"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-3">
+                      <label>Cédula:</label>
+                      <input
+                        v-model="cedulaAdmonCuentas"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-3">
+                      <label>Correo:</label>
+                      <input
+                        v-model="emailAdmonCuentas"
+                        type="email"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+                </form> -->
+
+        <!-- formulario admon usuario/admon cuenta -->
+        <!-- <form v-if="opcionAdmonCuentas == 'SI' ">
+                  <h5>Administrador de Usuarios / Administrador de Cuentas</h5>
+                  <div class="form-row">
+                    <div class="col-md-3">
+                      <label>Nombre:</label>
+                      <input
+                        v-model="nombreAdmonUsuarioyCuenta"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-3">
+                      <label>Cédula:</label>
+                      <input
+                        v-model="cedulaAdmonUsuarioyCuenta"
+                        type="text"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="col-md-3">
+                      <label>Correo:</label>
+                      <input
+                        v-model="emailAdmonUsuarioyCuenta"
+                        type="email"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+                </form> -->
+        <!-- termina formulario administrador de usuarios /administrador de cuentas -->
+        <!-- </div>
+            </div>
+          </div>
+        </div> -->
+        <!-- termina sección administrador de usuarios /administrador de cuentas -->
+
+        <!-- <hr /> -->
+
+        <!-- MUESTRA RESULTADOS -->
+        <br /><br />
+        <div class="row">
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <!-- seccion servicio -->
+                <table
+                  class="table table-sm table-bordered table-hover table-condensed table-responsive-md resultado"
+                >
+                  <thead class="thead-dark">
+                    <tr>
+                      <th>Información del Servicio</th>
+                      <th>Data</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Nombre de Vinculación:</td>
+                      <td>{{ razonSocial }}</td>
+                    </tr>
+                    <tr>
+                      <td>Entidad Financiera:</td>
+                      <td>{{ entidadFinanciera}}</td>
+                    </tr>
+                    <tr>
+                      <td>Tipo de Servicio:</td>
+                      <td>{{ tipoServicio }}</td>
+                    </tr>
+                    <tr>
+                      <td>Tipo de Conexión:</td>
+                      <td>{{ tipoConexion }}</td>
+                    </tr>
+                    <tr>
+                      <td>Tipo de Funcionalidad:</td>
+                      <td>{{ tipoFuncionalidad }}</td>
+                    </tr>
+                    <tr>
+                      <td>Pasarela:</td>
+                      <td>{{ pasarela }}</td>
+                    </tr>
+                    <tr>
+                      <td>Categoría:</td>
+                      <td>{{ categoria }}</td>
+                    </tr>
+                    <tr>
+                      <td>¿Cómo Sucursal?:</td>
+                      <td>{{ opcionSucursal }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <!-- finaliza seccion servicio -->
+
+                <!-- SECCION CODIGOS DE SERVICIO -->
+                <!-- Seccion Código de servicio 1 -->
+                <table
+                  class="table table-sm table-bordered table-hover table-condensed table-responsive-md resultado"
+                >
+                  <thead v-if="numerosCodigos >= 1 " class="thead-dark">
+                    <tr>
+                      <th>Tipo de servicio</th>
+                      <th>Código de Servicio</th>
+                      <th>Descripción del Servicio</th>
+                      <th>Número de Cuenta</th>
+                      <th>Tipo de Cuenta</th>
+                      <th>Límite Persona Natural</th>
+                      <th>Límite Persona Jurídica</th>
+                    </tr>
+                  </thead>
+                  <tbody v-if="numerosCodigos >= 1 " class="muestra__servicios">
+                    <tr v-if="numerosCodigos >= 1 ">
+                      <td>{{ tipoServicio1 }}</td>
+                      <td>{{ codigoServicio1 }}</td>
+                      <td>{{ descripcionServicio1 }}</td>
+                      <td>{{ cuenta1 }}</td>
+                      <td>{{ tipoCuenta1 }}</td>
+                      <td>{{ limiteNatural1 }}</td>
+                      <td>{{ limiteJuridica1 }}</td>
+                    </tr>
+                    <tr v-if="numerosCodigos >= 2 ">
+                      <td>{{ tipoServicio2 }}</td>
+                      <td>{{ codigoServicio2 }}</td>
+                      <td>{{ descripcionServicio2 }}</td>
+                      <td>{{ cuenta2 }}</td>
+                      <td>{{ tipoCuenta2 }}</td>
+                      <td>{{ limiteNatural2 }}</td>
+                      <td>{{ limiteJuridica2 }}</td>
+                    </tr>
+
+                    <tr v-if="numerosCodigos >= 3 ">
+                      <td>{{ tipoServicio3 }}</td>
+                      <td>{{ codigoServicio3 }}</td>
+                      <td>{{ descripcionServicio3 }}</td>
+                      <td>{{ cuenta3 }}</td>
+                      <td>{{ tipoCuenta3 }}</td>
+                      <td>{{ limiteNatural3 }}</td>
+                      <td>{{ limiteJuridica3 }}</td>
+                    </tr>
+                    <tr v-if="numerosCodigos >= 4 ">
+                      <td>{{ tipoServicio4 }}</td>
+                      <td>{{ codigoServicio4 }}</td>
+                      <td>{{ descripcionServicio4 }}</td>
+                      <td>{{ cuenta4 }}</td>
+                      <td>{{ tipoCuenta4 }}</td>
+                      <td>{{ limiteNatural4 }}</td>
+                      <td>{{ limiteJuridica4 }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table
+                  class="table table-sm table-bordered table-hover table-condensed table-responsive-md resultado"
+                >
+                  <!-- Seccion Información empresa -->
+                  <thead class="thead-dark">
+                    <tr>
+                      <th>Información Empresa</th>
+                      <th>Data</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Nit:</td>
+                      <td>{{ nit }}</td>
+                    </tr>
+                    <tr>
+                      <td>No. Verificación:</td>
+                      <td>{{ noVerificacion }}</td>
+                    </tr>
+                    <tr>
+                      <td>Razón Social:</td>
+                      <td>{{ razonSocial }}</td>
+                    </tr>
+                    <tr>
+                      <td>Marca Comercial:</td>
+                      <td>{{ marcaComercial }}</td>
+                    </tr>
+                    <tr>
+                      <td>Ciudad Empresa:</td>
+                      <td>{{ ciudadEmpresa }}</td>
+                    </tr>
+                    <tr>
+                      <td>Código CIIU:</td>
+                      <td>{{ ciiu }}</td>
+                    </tr>
+                    <tr>
+                      <td>Actividad Económica:</td>
+                      <td>{{ actividadEconomica }}</td>
+                    </tr>
+                    <tr>
+                      <td>Dirección Empresa:</td>
+                      <td>{{ direccionEmpresa }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table
+                  class="table table-sm table-bordered table-hover table-condensed table-responsive-md resultado"
+                >
+                  <!-- Seccion Ejecutivo de Cuenta / Consultor Asignado-->
+                  <thead class="thead-dark">
+                    <tr>
+                      <th>Ejecutivo de Cuenta / Consultor Asignado</th>
+                      <th>Data</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Nombre del ejecutivo de cuenta:</td>
+                      <td>{{ nombreEjecutivoCuenta }}</td>
+                    </tr>
+                    <tr>
+                      <td>Teléfonos ejecutivo de cuenta:</td>
+                      <td>{{ telefonoEjecutivoCuenta }}</td>
+                    </tr>
+                    <tr>
+                      <td>Correo electrónico ejecutivo de cuenta:</td>
+                      <td>{{ emailEjecutivoCuenta }}</td>
+                    </tr>
+                    <tr>
+                      <td>Consultor ACH Asignado:</td>
+                      <td>{{ consultorACH }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table
+                  class="table table-sm table-bordered table-hover table-condensed table-responsive-md resultado"
+                >
+                  <!-- Seccion Administrador de usuarios-->
+                  <thead v-if="opcionAdmonCuentas == 'NO' " class="thead-dark">
+                    <tr>
+                      <th>Administrador de Usuarios</th>
+                      <th>Data</th>
+                    </tr>
+                  </thead>
+                  <tbody v-if="opcionAdmonCuentas == 'NO' ">
+                    <tr>
+                      <td>Nombre:</td>
+                      <td>{{ nombreAdmonUsuarios }}</td>
+                    </tr>
+                    <tr>
+                      <td>Cédula:</td>
+                      <td>{{ cedulaAdmonUsuarios }}</td>
+                    </tr>
+                    <tr>
+                      <td>Correo:</td>
+                      <td>{{ emailAdmonUsuarios }}</td>
+                    </tr>
+                    <tr>
+                      <td>Teléfono:</td>
+                      <td>{{ telefonoAdmonUsuarios }}</td>
+                    </tr>
+                  </tbody>
+
+                  <!-- Seccion Administrador de cuentas-->
+                  <thead v-if="opcionAdmonCuentas == 'NO' " class="thead-dark">
+                    <tr>
+                      <th>Administrador de Cuentas</th>
+                      <th>Data</th>
+                    </tr>
+                  </thead>
+                  <tbody v-if="opcionAdmonCuentas == 'NO' ">
+                    <tr>
+                      <td>Nombre:</td>
+                      <td>{{ nombreAdmonCuentas }}</td>
+                    </tr>
+                    <tr>
+                      <td>Cédula:</td>
+                      <td>{{ cedulaAdmonCuentas }}</td>
+                    </tr>
+                    <tr>
+                      <td>Correo:</td>
+                      <td>{{ emailAdmonCuentas }}</td>
+                    </tr>
+                    <tr>
+                      <td>Teléfono:</td>
+                      <td>{{ telefonoAdmonCuentas }}</td>
+                    </tr>
+                  </tbody>
+
+                  <!-- Seccion Administrador de usuarios / cuentas-->
+                  <thead v-if="opcionAdmonCuentas == 'SI' " class="thead-dark">
+                    <tr>
+                      <th>
+                        Administrador de usuarios / Administrador de cuentas
+                      </th>
+                      <th>Data</th>
+                    </tr>
+                  </thead>
+                  <tbody v-if="opcionAdmonCuentas == 'SI' ">
+                    <tr>
+                      <td>Nombre:</td>
+                      <td>{{ nombreAdmonUsuarioyCuenta }}</td>
+                    </tr>
+                    <tr>
+                      <td>Cédula:</td>
+                      <td>{{ cedulaAdmonUsuarioyCuenta }}</td>
+                    </tr>
+                    <tr>
+                      <td>Correo:</td>
+                      <td>{{ emailAdmonUsuarioyCuenta }}</td>
+                    </tr>
+                    <tr>
+                      <td>Teléfono:</td>
+                      <td>{{ telefonoAdmonUsuarioyCuenta }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- termina muestra resultados -->
+      </div>
+    </div>
+
+    <script>
+      var ach = new Vue({
+        el: "#ach",
+        data: {
+          tipoServicio: "",
+          tipoConexion: "",
+          tipoFuncionalidad: "",
+          pasarela: "",
+          categoria: "",
+          opcionSucursal: "",
+          numerosCodigos: "",
+          tipoServicio1: "",
+          codigoServicio1: "",
+          descripcionServicio1: "",
+          cuenta1: "",
+          tipoCuenta1: "",
+          limiteJuridica1: "",
+          limiteNatural1: "",
+          tipoServicio2: "",
+          codigoServicio2: "",
+          descripcionServicio2: "",
+          cuenta2: "",
+          tipoCuenta2: "",
+          limiteJuridica2: "",
+          limiteNatural2: "",
+          tipoServicio3: "",
+          codigoServicio3: "",
+          descripcionServicio3: "",
+          cuenta3: "",
+          tipoCuenta3: "",
+          limiteJuridica3: "",
+          limiteNatural3: "",
+          tipoServicio4: "",
+          codigoServicio4: "",
+          descripcionServicio4: "",
+          cuenta4: "",
+          tipoCuenta4: "",
+          limiteJuridica4: "",
+          limiteNatural4: "",
+          nit: "",
+          noVerificacion: "",
+          razonSocial: "",
+          marcaComercial: "",
+          ciudadEmpresa: "",
+          ciiu: "",
+          actividadEconomica: "",
+          direccionEmpresa: "",
+          nombreEjecutivoCuenta: "",
+          telefonoEjecutivoCuenta: "",
+          emailEjecutivoCuenta: "",
+          consultorACH: "",
+          opcionAdmonCuentas: "",
+          nombreAdmonUsuarios: "",
+          cedulaAdmonUsuarios: "",
+          emailAdmonUsuarios: "",
+          nombreAdmonCuentas: "",
+          cedulaAdmonCuentas: "",
+          emailAdmonCuentas: "",
+          nombreAdmonUsuarioyCuenta: "",
+          cedulaAdmonUsuarioyCuenta: "",
+          emailAdmonUsuarioyCuenta: "",
+          telefonoAdmonUsuarios: "",
+          telefonoAdmonCuentas: "",
+          telefonoAdmonUsuarioyCuenta: "",
+
+          banco: {
+            1: {
+              nombre: "BANCO AGRARIO",
+            },
+            2: {
+              nombre: "BANCO AV VILLAS",
+            },
+            3: {
+              nombre: "BANCO BBVA",
+            },
+            4: {
+              nombre: "BANCO CAJA SOCIAL",
+            },
+            5: {
+              nombre: "BANCO COLPATRIA",
+            },
+            6: {
+              nombre: "BANCO COOPERATIVO COOPCENTRAL",
+            },
+            7: {
+              nombre: "BANCO DE BOGOTA",
+            },
+            8: {
+              nombre: "BANCO DE OCCIDENTE",
+            },
+            9: {
+              nombre: "BANCO FALABELLA",
+            },
+            10: {
+              nombre: "BANCO GNB SUDAMERIS",
+            },
+            11: {
+              nombre: "BANCO ITAU",
+            },
+            12: {
+              nombre: "BANCO PICHINCHA S.A",
+            },
+            13: {
+              nombre: "BANCO POPULAR",
+            },
+            14: {
+              nombre: "BANCO SANTANDER COLOMBIA",
+            },
+            15: {
+              nombre: "BANCO SERFINANZA",
+            },
+            16: {
+              nombre: "BANCOLOMBIA",
+            },
+            17: {
+              nombre: "BANCOOMEVA",
+            },
+            18: {
+              nombre: "CITIBANK",
+            },
+            19: {
+              nombre: "CONFIAR COOPERATIVA FINANCIERA",
+            },
+            20: {
+              nombre: "DAVIVIENDA",
+            },
+          },
+          entidadFinanciera: null,
+
+          servicio: {
+            1: {
+              nombre: "PSE",
+            },
+            2: {
+              nombre: "PSE Pagos",
+            },
+            3: {
+              nombre: "PSE Pagos Portales",
+            },
+          },
+          tipoServicio: null,
+        },
+        computed: {
+          seleccionEntidadFinanciera() {
+            return Object.keys(this.banco).map((k) => {
+              let o = this.banco[k];
+              return `${o.nombre}`;
+            });
+          },
+
+          seleccionTipoServicio() {
+            return Object.keys(this.servicio).map((k) => {
+              let o = this.servicio[k];
+              return `${o.nombre}`;
+            });
+          },
+        },
+      });
+    </script>
+
+    <script>
+      // MÓDULO SOLO NUMEROS
+      //   funcion de no permitir letras
+      window.addEventListener("load", function () {
+        miformulario.nit.addEventListener("keypress", soloNumeros, false);
+        miformulario.numeroVerificacion.addEventListener(
+          "keypress",
+          soloNumeros,
+          false
+        );
+        miformulario.codigoServicio.addEventListener(
+          "keypress",
+          soloNumeros,
+          false
+        );
+        miformulario.numeroCuenta.addEventListener(
+          "keypress",
+          soloNumeros,
+          false
+        );
+      });
+
+      //Solo permite introducir numeros.
+      function soloNumeros(e) {
+        var key = window.event ? e.which : e.keyCode;
+        if (key < 48 || key > 57) {
+          e.preventDefault();
+        }
+      }
+
+      //   TERMINA MODULO SOLO NÚMEROS
+    </script>
+
+    <footer>
+      <p>Jamer Hernández 2020</p>
+    </footer>
+  </body>
+</html>
